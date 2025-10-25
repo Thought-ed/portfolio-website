@@ -1,0 +1,149 @@
+|/* styles.css — extracted from index.html
+    Keep visual behavior unchanged. */
+* {
+    cursor: url('images/White Roblox Cursor Normal select (2016).cur'), auto !important;
+}
+
+/* pointer version for clickable elements */
+a,
+button,
+.project-card:hover,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+video:hover {
+    cursor: url('images/Roblox Cursor Link selecction (2016).cur'), pointer !important;
+}
+
+body {
+    background: url("images/wallpaper.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-color: #000; /* fills behind the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Comic Sans MS', 'Comic Sans', "Comic Neue", sans-serif;
+    color: #222;
+    overflow: hidden;
+}
+
+/* mac window frame */
+.window {
+    background-color: #fefefe;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 1200px;
+    overflow: hidden;
+    padding: 40px;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.window.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.window-header {
+    background-color: #e0e0e0;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: 1px solid #ccc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.mac-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.mac-btn.red { background-color: #ff5f57; }
+.mac-btn.yellow { background-color: #ffbd2e; }
+.mac-btn.green { background-color: #28c840; }
+
+/* intro text (the "hi" part) */
+#intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: #222222;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 2;
+}
+
+#intro.show { opacity: 1; }
+#intro.hide { opacity: 0; }
+
+main {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin-top: 50px; /* add space below mac buttons */
+}
+
+main.show { opacity: 1; transform: translateY(0); }
+
+h1 { font-size: 3rem; margin-bottom: 10px; }
+
+#animated-text { font-size: 1.8rem; margin-bottom: 20px; white-space: pre-line; }
+
+p { font-size: 1.2rem; }
+
+.title-container { display: flex; align-items: center; gap: 20px; margin-top: 40px; }
+
+.pfp { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 10px rgba(0,0,0,0.3); }
+
+.projects {
+    margin-top: 60px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.projects.show {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 5000px; /* big enough to reveal all cards smoothly */
+    transition: opacity 1s ease, transform 1s ease, max-height 1.2s ease;
+}
+
+.project-card {
+    background: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.project-card.show { opacity: 1; transform: translateY(0); }
+
+.project-card img, .project-card video { width: 100%; max-width: 500px; border-radius: 10px; margin-bottom: 10px; }
+
+.project-card h3 { margin-bottom: 5px; }
+
+.project-card a { color: #007bff; text-decoration: none; }
+
+.project-card a:hover { text-decoration: underline; }
