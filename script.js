@@ -13,19 +13,29 @@
     const loader = safeQuery('.loader');
 
     // Wallpaper transition then window pop-up after loader
+    let loaderSequenceActive = false;
     function hideLoaderSequence() {
-      if (!loader) return;
-      // Add a class to body to trigger potential background transition
-      document.body.classList.add('wallpaper');
-      // Fade out loader
-      loader.classList.add('hidden');
-      // Show window after 1.5s per requirement
-      if (windowEl) setTimeout(() => {
+      if (loaderSequenceActive) return;
+      loaderSequenceActive = true;
+      if (loader) {
+        // Add a class to body to trigger potential background transition
+        document.body.classList.add('wallpaper');
+        // Fade out loader
+        loader.classList.add('hidden');
+        // Show window after 1.5s per requirement
+        if (windowEl) setTimeout(() => {
+          windowEl.classList.add('show');
+          // Start intro typing ONLY after window pops up
+          startIntroTyping();
+          scheduleWindowHeightUpdate(true);
+        }, 1500);
+      } else if (windowEl) {
         windowEl.classList.add('show');
-        // Start intro typing ONLY after window pops up
         startIntroTyping();
         scheduleWindowHeightUpdate(true);
-      }, 1500);
+      } else {
+        startIntroTyping();
+      }
     }
 
     const intro = document.getElementById('intro');
@@ -209,8 +219,22 @@
       scheduleWindowHeightUpdate();
     }
 
-    // Loader can fade right away; window show triggers intro afterwards
-    hideLoaderSequence();
+    // Wait for all assets to finish loading (or a failsafe timeout) before hiding the loader
+    const LOADER_FAILSAFE_MS = 12000;
+    let loaderHideQueued = false;
+    function queueLoaderHide() {
+      if (loaderHideQueued) return;
+      loaderHideQueued = true;
+      hideLoaderSequence();
+    }
+
+    if (document.readyState === 'complete') {
+      queueLoaderHide();
+    } else {
+      window.addEventListener('load', () => queueLoaderHide(), { once: true });
+    }
+    setTimeout(() => queueLoaderHide(), LOADER_FAILSAFE_MS);
+
     showSkip(); // Show skip while intro typing is active
 
     function startMainTyping() {
