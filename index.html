@@ -19,12 +19,56 @@
 </head>
 
 <body>
+    <div class="loader" aria-label="Loading" role="status">
+        <div class="spinner"></div>
+        <p class="loader-text">Loading portfolio...</p>
+    </div>
+    <!-- Decorative Windows 11-like desktop background (icons left-aligned) -->
+    <div class="win11-desktop" aria-hidden="true">
+        <div class="desktop-shortcuts">
+            <div class="shortcut">
+                <img src="images/icons/robloxicon.png" alt="Roblox">
+                <span>Roblox</span>
+            </div>
+            <div class="shortcut">
+                <img src="images/icons/robloxstudioicon.png" alt="Roblox Studio">
+                <span>Roblox Studio</span>
+            </div>
+            <div class="shortcut">
+                <img src="images/icons/Notepad_Win11.svg.png" alt="Notepad">
+                <span>Notepad</span>
+            </div>
+        </div>
+        <div class="taskbar">
+            <div class="task-icons">
+                <span class="tb-icon" title="Start"><img src="images/icons/windows11icon.png" alt="Windows"></span>
+                <span class="tb-icon active" title="Chrome"><img src="images/icons/chromeicon.jpg" alt="Chrome"></span>
+                <span class="tb-icon active" title="File Explorer"><img src="images/icons/fileexplorericon.png" alt="File Explorer"></span>
+                <span class="tb-icon" title="Store"><img src="images/icons/storeicon.png" alt="Store"></span>
+            </div>
+            <div class="task-right">
+                <div class="task-status">
+                    <i class="fa-solid fa-wifi" aria-hidden="true"></i>
+                    <i class="fa-solid fa-volume-high" aria-hidden="true"></i>
+                    <i class="fa-solid fa-battery-three-quarters" aria-hidden="true"></i>
+                </div>
+                <div class="task-clock">
+                    <div class="time" id="taskbar-time">--:--</div>
+                    <div class="date" id="taskbar-date">--/--/----</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="window">
         <div class="window-header">
             <span class="mac-btn red"></span>
             <span class="mac-btn yellow"></span>
             <span class="mac-btn green"></span>
+            <div class="window-title">thought_ed's portfolio</div>
         </div>
+
+        <!-- Skip intro button (shown during typing) -->
+        <button id="skip-intro" class="skip-intro" hidden aria-label="Skip intro">Skip intro</button>
 
         <!-- intro text -->
         <div id="intro"></div>
@@ -44,72 +88,128 @@
 
                 <div class="project-card">
                     <img src="images/HELMIS2.png" alt="helmis ui screenshot">
-                    <video controls muted loop width="500">
-                        <source src="videos/HELMIS1.mp4" type="video/mp4">
-                    </video>
+                    <div class="video-container">
+                        <video controls muted loop playsinline preload="metadata" width="500">
+                            <source src="videos/HELMIS1.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h3>medical patient information, prescription, and dispensing system 💉 (do watch the full video)</h3>
                     <p>an UI done from scratch. it places all players with the patient role in a list, and you can
                         change patient information. you can also prescribe different medicines and spawn them. includes
                         dynamic elements like UIcorner, UIlists, tables and databases,</p>
+                        <div class="tags" aria-label="Tags">
+                            <span class="tag ui">ui design</span>
+                            <span class="tag data">data handling</span>
+                            <span class="tag systems">systems</span>
+                        </div>
                 </div>
 
                 <div class="project-card">
                     <img src="images/Monitor2.png" alt="helmis ui screenshot">
-                    <video controls muted loop width="500">
-                        <source src="videos/Monitor1.mp4" type="video/mp4">
-                    </video>
+                    <div class="video-container">
+                        <video controls muted loop playsinline preload="metadata" width="500">
+                            <source src="videos/Monitor1.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h3>medical patient vitals monitor</h3>
                     <p>it is also an UI done from scratch, which includes the UI for watching those monitors,
                         variations for those monitors, vital storing for each patient, and dynamic transitions
                         between vitals once its edited. its a splendid ui, i'd say.
                     </p>
+                        <div class="tags" aria-label="Tags">
+                            <span class="tag ui">ui design</span>
+                            <span class="tag ux">ux</span>
+                            <span class="tag monitoring">monitoring</span>
+                        </div>
                 </div>
 
                 <div class="project-card">
-                    <video controls muted loop width="500">
-                        <source src="videos/magic_tool.mp4" type="video/mp4">
-                    </video>
+                    <div class="video-container">
+                        <video controls muted loop playsinline preload="metadata" width="500">
+                            <source src="videos/magic_tool.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h3>magic testing tool 🪄</h3>
                     <p>a cool tool i made for testing magic mechanics — this clip shows an early testing version.</p>
+                        <div class="tags" aria-label="Tags">
+                            <span class="tag tooling">tooling</span>
+                            <span class="tag fx">effects</span>
+                            <span class="tag testing">testing</span>
+                        </div>
                 </div>
 
                 <div class="project-card">
-                    <video controls muted loop width="500">
-                        <source src="videos/damage_system1.mp4" type="video/mp4">
-                    </video>
-                    <video controls muted loop width="500">
-                        <source src="videos/damage_system2.mp4" type="video/mp4">
-                    </video>
+                    <div class="video-container">
+                        <video controls muted loop playsinline preload="metadata" width="500">
+                            <source src="videos/damage_system1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-container">
+                        <video controls muted loop playsinline preload="metadata" width="500">
+                            <source src="videos/damage_system2.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h3>combat damage & animations ⚔️</h3>
                     <p>includes a full damage system and custom combat animations, all scripted from scratch.</p>
+                        <div class="tags" aria-label="Tags">
+                            <span class="tag animation">animation</span>
+                            <span class="tag combat">combat</span>
+                            <span class="tag systems">systems</span>
+                        </div>
                 </div>
 
                 <div class="project-card">
-                    <video controls muted loop width="500">
-                        <source src="videos/gun_system.mp4" type="video/mp4">
-                    </video>
+                    <div class="video-container">
+                        <video controls muted loop playsinline preload="metadata" width="500">
+                            <source src="videos/gun_system.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h3>low-poly gun system 🔫</h3>
                     <p>a primitive low-poly weapon system using raycasting, custom reloads, and firing animations.</p>
+                        <div class="tags" aria-label="Tags">
+                            <span class="tag raycast">raycasting</span>
+                            <span class="tag weapons">weapons</span>
+                            <span class="tag fx">fx</span>
+                        </div>
                 </div>
 
                 <div class="project-card">
-                    <video controls muted loop width="500">
-                        <source src="videos/ui_menu.mp4" type="video/mp4">
-                    </video>
+                    <div class="video-container">
+                        <video controls muted loop playsinline preload="metadata" width="500">
+                            <source src="videos/ui_menu.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h3>main menu ui & spawn tools 🧭</h3>
                     <p>main menu made completely from scratch — includes camera movement and tool spawning logic.</p>
+                        <div class="tags" aria-label="Tags">
+                            <span class="tag ui">ui design</span>
+                            <span class="tag camera">camera</span>
+                            <span class="tag tools">tools</span>
+                        </div>
                 </div>
 
                 <div class="project-card">
-                    <video controls muted loop width="500">
-                        <source src="videos/medicine_model.mp4" type="video/mp4">
-                    </video>
+                    <div class="video-container">
+                        <video controls muted loop playsinline preload="metadata" width="500">
+                            <source src="videos/medicine_model.mp4" type="video/mp4">
+                        </video>
+                    </div>
                    <h3>medicine model (wip) </h3>
                     <p>a small model i've been working on — early stage of 3d modeling for a future game feature.</p>
+                        <div class="tags" aria-label="Tags">
+                            <span class="tag modeling">modeling</span>
+                            <span class="tag wip">wip</span>
+                        </div>
                 </div>
                 <div class="project-card">
                     <h3>this portfolio page</h3>
                     <p>lmao</p>
+                        <div class="tags" aria-label="Tags">
+                            <span class="tag html">html</span>
+                            <span class="tag css">css</span>
+                            <span class="tag js">javascript</span>
+                            <span class="tag perf">performance</span>
+                        </div>
                 </div>
             </section>
         </main>

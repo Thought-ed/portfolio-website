@@ -2,56 +2,222 @@
 (function () {
   'use strict';
 
-  function safeQuery(selector) {
-    return document.querySelector(selector);
-  }
+  function safeQuery(selector) { return document.querySelector(selector); }
+
+  // Hold references to active TypeIt instances so we can cancel them
+  const typingInstances = [];
+  let skipped = false;
 
   document.addEventListener('DOMContentLoaded', () => {
     const windowEl = safeQuery('.window');
-    if (windowEl) setTimeout(() => windowEl.classList.add('show'), 200);
+    const loader = safeQuery('.loader');
+
+    // Wallpaper transition then window pop-up after loader
+    function hideLoaderSequence() {
+      if (!loader) return;
+      // Add a class to body to trigger potential background transition
+      document.body.classList.add('wallpaper');
+      // Fade out loader
+      loader.classList.add('hidden');
+      // Show window after 1.5s per requirement
+      if (windowEl) setTimeout(() => {
+        windowEl.classList.add('show');
+        // Start intro typing ONLY after window pops up
+        startIntroTyping();
+        scheduleWindowHeightUpdate(true);
+      }, 1500);
+    }
 
     const intro = document.getElementById('intro');
     const main = document.getElementById('main-content');
+    const skipBtn = document.getElementById('skip-intro');
+    const animatedText = document.getElementById('animated-text');
+    const projects = document.getElementById('projects');
+    const clockTimeEl = document.getElementById('taskbar-time');
+    const clockDateEl = document.getElementById('taskbar-date');
+
+    let previousWindowHeight = null;
+    let heightUpdateScheduled = false;
+
+    function applyWindowHeightUpdate(forceImmediate = false) {
+      if (!windowEl) return;
+      const prevHeight = previousWindowHeight ?? windowEl.getBoundingClientRect().height;
+      const storedPrev = Number.isFinite(prevHeight) ? prevHeight : null;
+      windowEl.style.height = 'auto';
+      const newHeight = windowEl.getBoundingClientRect().height;
+      if (forceImmediate || storedPrev === null) {
+        windowEl.style.height = `${newHeight}px`;
+      } else if (Math.abs(newHeight - storedPrev) > 0.5) {
+        windowEl.style.height = `${storedPrev}px`;
+        // force reflow so transition can occur
+        void windowEl.offsetHeight;
+        windowEl.style.height = `${newHeight}px`;
+      } else {
+        windowEl.style.height = `${newHeight}px`;
+      }
+      previousWindowHeight = newHeight;
+    }
+
+    function scheduleWindowHeightUpdate(forceImmediate = false) {
+      if (!windowEl) return;
+      if (forceImmediate) {
+        applyWindowHeightUpdate(true);
+        return;
+      }
+      if (heightUpdateScheduled) return;
+      heightUpdateScheduled = true;
+      requestAnimationFrame(() => {
+        applyWindowHeightUpdate();
+        heightUpdateScheduled = false;
+      });
+    }
 
     if (!intro || !main) return console.warn('Expected DOM elements missing (intro/main)');
 
     intro.classList.add('show');
+    // We'll kick off typing later via startIntroTyping()
 
+    if (window.ResizeObserver && windowEl) {
+      const resizeObserver = new ResizeObserver(() => scheduleWindowHeightUpdate());
+      [intro, main, animatedText, projects].forEach(el => { if (el) resizeObserver.observe(el); });
+    }
+
+    scheduleWindowHeightUpdate(true);
+    window.addEventListener('resize', () => scheduleWindowHeightUpdate(true));
+
+    function showSkip() { if (skipBtn && !skipped) skipBtn.hidden = false; }
+    function hideSkip() { if (skipBtn) skipBtn.hidden = true; }
+
+    // Reveal projects with staggered animation
+    function revealProjectsInstant() {
+      if (!projects) return;
+      projects.classList.add('show');
+      const cards = projects.querySelectorAll('.project-card');
+      cards.forEach(card => card.classList.add('show'));
+      scheduleWindowHeightUpdate(true);
+    }
+
+    // Final text that should appear if user skips early
+    const finalLines = [
+      ">i'm thought_ed",
+      ">i know how to code some things in roblox",
+      ">if you're here, it's probably cause i sent you my portfolio",
+      ">so uhh",
+      ">welcome to my portfolio :D",
+      ">by the way, if you have criticism about this page",
+      ">please tell me, i'd love to improve it :)"
+    ];
+
+    function writeFinalTextInstant() {
+      if (!animatedText) return;
+      animatedText.textContent = finalLines.join('\n');
+    }
+
+    function cleanupTyping() {
+      typingInstances.forEach(inst => {
+        try { inst.destroy(true); } catch (_) { /* noop */ }
+      });
+      typingInstances.length = 0;
+      document.querySelectorAll('.ti-cursor').forEach(c => c.remove());
+    }
+
+    function skipIntroFlow() {
+      if (skipped) return; // idempotent
+      skipped = true;
+      cleanupTyping();
+      hideSkip();
+      // Hide intro immediately
+      intro.classList.add('hide');
+      intro.style.display = 'none';
+      // Show main content and body scroll
+      main.classList.add('show');
+      document.body.style.overflow = 'auto';
+      // Write final text and reveal projects
+      writeFinalTextInstant();
+      revealProjectsInstant();
+      scheduleWindowHeightUpdate(true);
+      // Scroll to projects for convenience
+      if (projects) projects.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    if (skipBtn) {
+      skipBtn.addEventListener('click', skipIntroFlow);
+    }
+
+    // Decorative taskbar clock
+    function pad(n){ return n.toString().padStart(2,'0'); }
+    function updateClock(){
+      if (!clockTimeEl || !clockDateEl) return;
+      const now = new Date();
+      // Use user's locale; 12h/24h will auto follow system
+      const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const date = now.toLocaleDateString([], { year: 'numeric', month: '2-digit', day: '2-digit' });
+      clockTimeEl.textContent = time;
+      clockDateEl.textContent = date;
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+
+    // If TypeIt missing, fallback immediately
     if (typeof TypeIt !== 'function') {
       console.warn('TypeIt is not loaded - skipping typing animations');
-      // reveal main content as fallback
       intro.style.display = 'none';
       main.classList.add('show');
       document.body.style.overflow = 'auto';
-      const projects = document.getElementById('projects');
-      if (projects) projects.classList.add('show');
+      writeFinalTextInstant();
+      revealProjectsInstant();
+      if (loader) {
+        document.body.classList.add('wallpaper');
+        loader.classList.add('hidden');
+      }
+      if (windowEl) {
+        windowEl.classList.add('show');
+        scheduleWindowHeightUpdate(true);
+      }
       return;
     }
 
-    new TypeIt('#intro', {
-      speed: 200,
-      waitUntilVisible: true,
-      afterComplete: (instance) => {
-        instance.destroy();
-        setTimeout(() => {
-          intro.classList.add('hide');
+    function startIntroTyping() {
+      // Ensure skip hidden during "hi"
+      hideSkip();
+      const introInstance = new TypeIt('#intro', {
+        speed: 200,
+        waitUntilVisible: true,
+        afterComplete: (instance) => {
+          // Remove instance and transition to main typing
+          instance.destroy();
+          hideSkip(); // keep hidden while switching views
           setTimeout(() => {
-            intro.style.display = 'none';
-            main.classList.add('show');
-            document.body.style.overflow = 'auto';
-            startMainTyping();
-          }, 800);
-        }, 1000);
-      }
-    })
-      .type('h')
-      .pause(500)
-      .type('i')
-      .pause(700)
-      .go();
+            intro.classList.add('hide');
+            setTimeout(() => {
+              intro.style.display = 'none';
+              main.classList.add('show');
+              document.body.style.overflow = 'auto';
+              startMainTyping();
+              scheduleWindowHeightUpdate(true);
+            }, 800);
+          }, 600);
+        }
+      })
+        .type('h')
+        .pause(500)
+        .type('i')
+        .pause(700);
+
+      typingInstances.push(introInstance);
+      introInstance.go();
+      scheduleWindowHeightUpdate();
+    }
+
+    // Loader can fade right away; window show triggers intro afterwards
+    hideLoaderSequence();
+    showSkip(); // Show skip while intro typing is active
 
     function startMainTyping() {
-      new TypeIt('#animated-text', { speed: 25, waitUntilVisible: true })
+      if (skipped) return; // If already skipped, avoid starting animation
+      showSkip(); // Allow skipping during main typing
+      scheduleWindowHeightUpdate();
+      const mainInstance = new TypeIt('#animated-text', { speed: 25, waitUntilVisible: true })
         .type(">i'm thought_ed")
         .pause(1000)
         .break()
@@ -70,11 +236,14 @@
         .pause(500)
         .exec(() => {
           setTimeout(() => {
-            const projects = document.getElementById('projects');
+            if (skipped) return;
             if (!projects) return;
             projects.classList.add('show');
             const cards = projects.querySelectorAll('.project-card');
-            cards.forEach((card, i) => setTimeout(() => card.classList.add('show'), i * 500));
+            cards.forEach((card, i) => setTimeout(() => {
+              card.classList.add('show');
+              scheduleWindowHeightUpdate();
+            }, i * 500));
           }, 800);
         })
         .pause(1000)
@@ -82,7 +251,42 @@
         .break()
         .pause(500)
         .type(">please tell me, i'd love to improve it :)")
-        .go();
+        .pause(400)
+        .exec(() => {
+          // Completed main typing
+          hideSkip();
+          scheduleWindowHeightUpdate();
+        });
+
+      typingInstances.push(mainInstance);
+      mainInstance.go();
     }
+
+    // Video placeholders: click to load and play (lazy load behavior)
+    document.querySelectorAll('.video-container').forEach(container => {
+      const video = container.querySelector('video');
+      const placeholder = container.querySelector('.video-placeholder');
+      if (!video || !placeholder) return;
+
+      const activate = () => {
+        if (placeholder.classList.contains('loading') || placeholder.classList.contains('hidden')) return;
+        placeholder.classList.add('loading');
+        video.setAttribute('controls', 'controls');
+        const hideOverlay = () => {
+          placeholder.classList.add('hidden');
+          placeholder.classList.remove('loading');
+        };
+        video.addEventListener('playing', hideOverlay, { once: true });
+        video.addEventListener('canplay', hideOverlay, { once: true });
+        try { video.load(); } catch (_) {}
+        video.play().catch(() => hideOverlay());
+      };
+
+      placeholder.addEventListener('click', activate);
+      placeholder.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+      });
+      video.addEventListener('click', () => { if (!placeholder.classList.contains('hidden')) activate(); });
+    });
   });
 })();
