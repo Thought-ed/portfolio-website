@@ -38,6 +38,10 @@
                 <img src="images/icons/Notepad_Win11.svg.png" alt="Notepad">
                 <span>Notepad</span>
             </div>
+            <div class="shortcut portfolio-shortcut" data-shortcut="portfolio" role="button" aria-label="portfolio.exe">
+                <img src="images/icons/fileexplorericon.png" alt="Portfolio executable">
+                <span>portfolio.exe</span>
+            </div>
         </div>
         <div class="taskbar">
             <div class="task-icons">
@@ -59,6 +63,13 @@
             </div>
         </div>
     </div>
+    <div class="cursor-intro-layer" aria-hidden="true">
+        <div id="demo-cursor">
+            <span class="cursor-shape" aria-hidden="true"></span>
+            <span class="cursor-label" id="demo-cursor-label">thought_ed</span>
+        </div>
+    </div>
+
     <div class="window">
         <div class="window-header">
             <span class="mac-btn red"></span>
@@ -69,6 +80,7 @@
 
         <!-- Skip intro button (shown during typing) -->
         <button id="skip-intro" class="skip-intro" hidden aria-label="Skip intro">Skip intro</button>
+        <button id="cursor-preview" class="cursor-preview" hidden aria-label="Preview cursor intro">Preview cursor</button>
 
         <!-- intro text -->
         <div id="intro"></div>

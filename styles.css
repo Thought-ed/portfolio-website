@@ -247,6 +247,67 @@ body.wallpaper .loader {
 .desktop-shortcuts .shortcut { width: 74px; display: flex; flex-direction: column; align-items: center; gap: 6px; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25)); }
 .desktop-shortcuts .shortcut img { width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: rgba(255,255,255,0.08); }
 .desktop-shortcuts .shortcut span { color: rgba(255,255,255,0.9); font-size: 0.72rem; text-align: center; text-shadow: 0 1px 2px rgba(0,0,0,0.6); }
+.desktop-shortcuts .shortcut.is-selected img {
+  outline: 2px solid rgba(124, 178, 255, 0.9);
+  background: rgba(124, 178, 255, 0.25);
+}
+.desktop-shortcuts .shortcut.is-selected span {
+  background: rgba(124, 178, 255, 0.35);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.desktop-shortcuts .shortcut.is-opening {
+  animation: shortcutPulse 0.6s ease both;
+}
+@keyframes shortcutPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); }
+  40% { transform: scale(0.98); filter: drop-shadow(0 3px 6px rgba(0,0,0,0.55)); }
+  100% { transform: scale(1); filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); }
+}
+
+.cursor-intro-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1500;
+}
+
+#demo-cursor {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  transform: translate(-9999px, -9999px);
+}
+#demo-cursor.is-visible {
+  opacity: 1;
+}
+
+#demo-cursor .cursor-shape {
+  position: absolute;
+  width: 22px;
+  height: 32px;
+  background: linear-gradient(180deg, #a6d4ff 0%, #5aa0ff 60%, #3c6bd1 100%);
+  clip-path: polygon(0% 0%, 0% 95%, 32% 74%, 48% 100%, 62% 80%, 100% 100%, 100% 82%, 32% 0%);
+  box-shadow: 0 2px 6px rgba(18, 52, 98, 0.35);
+  border: 1px solid rgba(255,255,255,0.6);
+}
+
+#demo-cursor .cursor-label {
+  position: absolute;
+  top: 20px;
+  left: 28px;
+  padding: 2px 8px 3px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  background: rgba(15,15,20,0.85);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  text-transform: lowercase;
+}
 
 /* Ensure inner media doesn't jitter when card lifts */
 .projects .project-card img,
@@ -648,3 +709,22 @@ img, video {
 .skip-intro[hidden] {
   display: none !important;
 }
+
+.cursor-preview {
+  position: fixed;
+  left: 14px;
+  bottom: 14px;
+  z-index: 1000;
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  font-family: inherit;
+  color: #0f1115;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.cursor-preview:hover { transform: translateY(-2px); }
+.cursor-preview[hidden] { display: none !important; }
