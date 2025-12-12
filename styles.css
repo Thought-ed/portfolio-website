@@ -286,12 +286,14 @@ body.wallpaper .loader {
 
 #demo-cursor .cursor-shape {
   position: absolute;
-  width: 22px;
-  height: 32px;
-  background: linear-gradient(180deg, #a6d4ff 0%, #5aa0ff 60%, #3c6bd1 100%);
-  clip-path: polygon(0% 0%, 0% 95%, 32% 74%, 48% 100%, 62% 80%, 100% 100%, 100% 82%, 32% 0%);
-  box-shadow: 0 2px 6px rgba(18, 52, 98, 0.35);
-  border: 1px solid rgba(255,255,255,0.6);
+  width: 32px;
+  height: 48px;
+  background-image: url('images/White-Roblox-Cursor-Normal-select-_2016_.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top left;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 6px rgba(18, 52, 98, 0.35));
 }
 
 #demo-cursor .cursor-label {

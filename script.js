@@ -3,7 +3,7 @@
   'use strict';
 
   const CURSOR_PATH_URL = 'cursor-path.json';
-  const CURSOR_INTRO_ENABLED = true;
+  const CURSOR_INTRO_ENABLED = true ;
   const RECORD_CURSOR_PATH = false;
   const FALLBACK_CURSOR_POINTS = [
     { t: 0, x: 0.26, y: 0.36 },
