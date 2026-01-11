@@ -15,6 +15,9 @@
     <meta property="og:type" content="website"> 
     <meta name="theme-color" content="#43B581">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -94,8 +97,28 @@
 
             <div id="animated-text"></div>
 
-            <section class="projects" id="projects">
-                <h2>my work 👇</h2>
+            <!-- Category selector (hidden until typing prompt) -->
+            <div id="category-selector" class="category-selector" aria-label="Choose portfolio category">
+                <button type="button" data-category="scripting" class="category-btn">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Scripting</span>
+                    <small>UI systems, combat, tools & more</small>
+                </button>
+                <button type="button" data-category="building" class="category-btn">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span>Building</span>
+                    <small>3D models, maps & environments</small>
+                </button>
+                <button type="button" class="category-btn disabled" disabled aria-disabled="true">
+                    <i class="fa-solid fa-shapes"></i>
+                    <span>Modelling</span>
+                    <small>Coming soon...</small>
+                </button>
+            </div>
+
+            <!-- Scripting Portfolio -->
+            <section class="projects" id="scripting-projects">
+                <h2>scripting work 💻</h2>
                 <p>btw i take robux and paypal</p>
 
                 <div class="project-card">
@@ -224,10 +247,54 @@
                         </div>
                 </div>
             </section>
+
+            <!-- Building Portfolio -->
+            <section class="building-projects" id="building-projects">
+                <h2>building work 🏗️</h2>
+                <p>3D environments and models for Roblox games</p>
+
+                <article class="building-game">
+                    <div class="building-header">
+                        <h3>Sci-Fi Station</h3>
+                        <p>A futuristic space station environment with modular corridors and control rooms.</p>
+                        <div class="tags">
+                            <span class="tag environment">environment</span>
+                            <span class="tag scifi">sci-fi</span>
+                            <span class="tag systems">systems</span>
+                        </div>
+                    </div>
+
+                    <div class="building-gallery">
+                        <img src="images/placeholder-scifi1.jpg" alt="Control room">
+                        <img src="images/placeholder-scifi2.jpg" alt="Corridor">
+                    </div>
+
+                    <div class="building-items">
+                        <div class="building-item">
+                            <h4>Control Console</h4>
+                            <p>Interactive control panel with animated screens and buttons.</p>
+                            <div class="viewer-placeholder" data-viewer-id="control-console" data-model="models/console.glb">
+                                <i class="fa-solid fa-cube"></i>
+                                <span>Click to view in 3D</span>
+                            </div>
+                        </div>
+
+                        <div class="building-item">
+                            <h4>Corridor Module</h4>
+                            <p>Modular corridor piece with lighting and door frames.</p>
+                            <div class="viewer-placeholder" data-viewer-id="corridor" data-model="models/corridor.glb">
+                                <i class="fa-solid fa-cube"></i>
+                                <span>Click to view in 3D</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
         </main>
     </div>
 
-    <script src="script.js" defer></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

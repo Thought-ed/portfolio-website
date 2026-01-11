@@ -544,10 +544,10 @@
         .type(">if you're here, it's probably cause i sent you my portfolio")
         .pause(1000)
         .break()
-        .type(">so uhh")
+        .type(">and you're looking to hire someone for making things")
         .pause(1000)
         .break()
-        .type(">welcome to my portfolio :D")
+        .type(">so uhh, choose a category you're looking for first")
         .pause(400)
         .break()
         .pause(500)
@@ -563,6 +563,8 @@
             }, i * 500));
           }, 800);
         })
+        .pause(500)
+        .type(">here it is :D")
         .pause(1000)
         .type(">by the way, if you have criticism about this page")
         .break()
