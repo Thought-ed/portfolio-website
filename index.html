@@ -8,11 +8,11 @@
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <meta property="og:title" content="thought_ed's portfolio">
     <meta property="og:description" content="roblox scripting projects and more stuff">
-    <meta property="og:image" content="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-B3EAFFA72094057540F3287DC0FAE1FB-Png/150/150/AvatarHeadshot/Webp/noFilter">
+    <meta property="og:image"
+        content="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-B3EAFFA72094057540F3287DC0FAE1FB-Png/150/150/AvatarHeadshot/Webp/noFilter">
     <meta property="og:url" content="https://a-tiny-developer-portfolio.web.app/">
-    <meta property="og:type" content="website"> 
+    <meta property="og:type" content="website">
     <meta name="theme-color" content="#43B581">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +50,8 @@
             <div class="task-icons">
                 <span class="tb-icon" title="Start"><img src="images/icons/windows11icon.png" alt="Windows"></span>
                 <span class="tb-icon active" title="Chrome"><img src="images/icons/chromeicon.jpg" alt="Chrome"></span>
-                <span class="tb-icon active" title="File Explorer"><img src="images/icons/fileexplorericon.png" alt="File Explorer"></span>
+                <span class="tb-icon active" title="File Explorer"><img src="images/icons/fileexplorericon.png"
+                        alt="File Explorer"></span>
                 <span class="tb-icon" title="Store"><img src="images/icons/storeicon.png" alt="Store"></span>
             </div>
             <div class="task-right">
@@ -83,7 +84,8 @@
 
         <!-- Skip intro button (shown during typing) -->
         <button id="skip-intro" class="skip-intro" hidden aria-label="Skip intro">Skip intro</button>
-        <button id="cursor-preview" class="cursor-preview" hidden aria-label="Preview cursor intro">Preview cursor</button>
+        <button id="cursor-preview" class="cursor-preview" hidden aria-label="Preview cursor intro">Preview
+            cursor</button>
 
         <!-- intro text -->
         <div id="intro"></div>
@@ -105,6 +107,7 @@
                     <small>UI systems, combat, tools & more</small>
                 </button>
                 <button type="button" data-category="building" class="category-btn">
+                    <span class="wip-badge">WIP</span>
                     <i class="fa-solid fa-cubes"></i>
                     <span>Building</span>
                     <small>3D models, maps & environments</small>
@@ -121,131 +124,210 @@
                 <h2>scripting work 💻</h2>
                 <p>btw i take robux and paypal</p>
 
-                <div class="project-card">
-                    <img src="images/HELMIS2.png" alt="helmis ui screenshot">
-                    <div class="video-container">
-                        <video controls muted loop playsinline preload="metadata" width="500">
-                            <source src="videos/HELMIS1.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <h3>medical patient information, prescription, and dispensing system 💉 (do watch the full video)</h3>
-                    <p>an UI done from scratch. it places all players with the patient role in a list, and you can
-                        change patient information. you can also prescribe different medicines and spawn them. includes
-                        dynamic elements like UIcorner, UIlists, tables and databases,</p>
-                        <div class="tags" aria-label="Tags">
+                <!-- Medical Systems Group -->
+                <article class="scripting-group">
+                    <div class="group-header">
+                        <h3>Medical Systems 💉</h3>
+                        <p>Healthcare UI and monitoring systems for roleplay games.</p>
+                        <div class="tags">
                             <span class="tag ui">ui design</span>
                             <span class="tag data">data handling</span>
                             <span class="tag systems">systems</span>
                         </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="images/Monitor2.png" alt="helmis ui screenshot">
-                    <div class="video-container">
-                        <video controls muted loop playsinline preload="metadata" width="500">
-                            <source src="videos/Monitor1.mp4" type="video/mp4">
-                        </video>
                     </div>
-                    <h3>medical patient vitals monitor</h3>
-                    <p>it is also an UI done from scratch, which includes the UI for watching those monitors,
-                        variations for those monitors, vital storing for each patient, and dynamic transitions
-                        between vitals once its edited. its a splendid ui, i'd say.
-                    </p>
-                        <div class="tags" aria-label="Tags">
-                            <span class="tag ui">ui design</span>
-                            <span class="tag ux">ux</span>
-                            <span class="tag monitoring">monitoring</span>
+
+                    <div class="group-items">
+                        <div class="script-item">
+                            <div class="item-header">
+                                <h4>Patient Information & Dispensing System</h4>
+                            </div>
+                            <p>An UI done from scratch. Places all players with the patient role in a list, change patient info, prescribe medicines and spawn them. Includes dynamic UIcorner, UIlists, tables and databases.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <div class="carousel-video">
+                                            <video controls muted loop playsinline preload="metadata">
+                                                <source src="videos/HELMIS1.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                        <img src="images/HELMIS2.png" alt="HELMIS UI screenshot">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
                         </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="video-container">
-                        <video controls muted loop playsinline preload="metadata" width="500">
-                            <source src="videos/magic_tool.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <h3>magic testing tool 🪄</h3>
-                    <p>a cool tool i made for testing magic mechanics — this clip shows an early testing version.</p>
-                        <div class="tags" aria-label="Tags">
-                            <span class="tag tooling">tooling</span>
-                            <span class="tag fx">effects</span>
-                            <span class="tag testing">testing</span>
+                        <div class="script-item">
+                            <div class="item-header">
+                                <h4>Patient Vitals Monitor</h4>
+                            </div>
+                            <p>UI for watching monitors, variations for monitors, vital storing for each patient, and dynamic transitions between vitals once edited.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <div class="carousel-video">
+                                            <video controls muted loop playsinline preload="metadata">
+                                                <source src="videos/Monitor1.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                        <img src="images/Monitor2.png" alt="Vitals monitor screenshot">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
                         </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="video-container">
-                        <video controls muted loop playsinline preload="metadata" width="500">
-                            <source src="videos/damage_system1.mp4" type="video/mp4">
-                        </video>
+                        <div class="script-item">
+                            <div class="item-header">
+                                <h4>Medicine Model (WIP)</h4>
+                            </div>
+                            <p>A small model I've been working on — early stage of 3D modeling for a future game feature.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <div class="carousel-video">
+                                            <video controls muted loop playsinline preload="metadata">
+                                                <source src="videos/medicine_model.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="video-container">
-                        <video controls muted loop playsinline preload="metadata" width="500">
-                            <source src="videos/damage_system2.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <h3>combat damage & animations ⚔️</h3>
-                    <p>includes a full damage system and custom combat animations, all scripted from scratch.</p>
-                        <div class="tags" aria-label="Tags">
-                            <span class="tag animation">animation</span>
+                </article>
+
+                <!-- Combat Systems Group -->
+                <article class="scripting-group">
+                    <div class="group-header">
+                        <h3>Combat Systems ⚔️</h3>
+                        <p>Damage systems, weapons, and combat mechanics.</p>
+                        <div class="tags">
                             <span class="tag combat">combat</span>
-                            <span class="tag systems">systems</span>
-                        </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="video-container">
-                        <video controls muted loop playsinline preload="metadata" width="500">
-                            <source src="videos/gun_system.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <h3>low-poly gun system 🔫</h3>
-                    <p>a primitive low-poly weapon system using raycasting, custom reloads, and firing animations.</p>
-                        <div class="tags" aria-label="Tags">
-                            <span class="tag raycast">raycasting</span>
+                            <span class="tag animation">animation</span>
                             <span class="tag weapons">weapons</span>
-                            <span class="tag fx">fx</span>
                         </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="video-container">
-                        <video controls muted loop playsinline preload="metadata" width="500">
-                            <source src="videos/ui_menu.mp4" type="video/mp4">
-                        </video>
                     </div>
-                    <h3>main menu ui & spawn tools 🧭</h3>
-                    <p>main menu made completely from scratch — includes camera movement and tool spawning logic.</p>
-                        <div class="tags" aria-label="Tags">
+
+                    <div class="group-items">
+                        <div class="script-item">
+                            <div class="item-header">
+                                <h4>Combat Damage & Animations</h4>
+                            </div>
+                            <p>Includes a full damage system and custom combat animations, all scripted from scratch.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <div class="carousel-video">
+                                            <video controls muted loop playsinline preload="metadata">
+                                                <source src="videos/damage_system1.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                        <div class="carousel-video">
+                                            <video controls muted loop playsinline preload="metadata">
+                                                <source src="videos/damage_system2.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="script-item">
+                            <div class="item-header">
+                                <h4>Low-Poly Gun System</h4>
+                            </div>
+                            <p>A primitive low-poly weapon system using raycasting, custom reloads, and firing animations.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <div class="carousel-video">
+                                            <video controls muted loop playsinline preload="metadata">
+                                                <source src="videos/gun_system.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tools & UI Group -->
+                <article class="scripting-group">
+                    <div class="group-header">
+                        <h3>Tools & UI 🧭</h3>
+                        <p>Utility tools, menus, and user interfaces.</p>
+                        <div class="tags">
                             <span class="tag ui">ui design</span>
+                            <span class="tag tooling">tooling</span>
                             <span class="tag camera">camera</span>
-                            <span class="tag tools">tools</span>
                         </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="video-container">
-                        <video controls muted loop playsinline preload="metadata" width="500">
-                            <source src="videos/medicine_model.mp4" type="video/mp4">
-                        </video>
                     </div>
-                   <h3>medicine model (wip) </h3>
-                    <p>a small model i've been working on — early stage of 3d modeling for a future game feature.</p>
-                        <div class="tags" aria-label="Tags">
-                            <span class="tag modeling">modeling</span>
-                            <span class="tag wip">wip</span>
+
+                    <div class="group-items">
+                        <div class="script-item">
+                            <div class="item-header">
+                                <h4>Magic Testing Tool</h4>
+                            </div>
+                            <p>A cool tool I made for testing magic mechanics — this clip shows an early testing version.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <div class="carousel-video">
+                                            <video controls muted loop playsinline preload="metadata">
+                                                <source src="videos/magic_tool.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
                         </div>
-                </div>
-                <div class="project-card">
-                    <h3>this portfolio page</h3>
-                    <p>lmao</p>
-                        <div class="tags" aria-label="Tags">
-                            <span class="tag html">html</span>
-                            <span class="tag css">css</span>
-                            <span class="tag js">javascript</span>
-                            <span class="tag perf">performance</span>
+
+                        <div class="script-item">
+                            <div class="item-header">
+                                <h4>Main Menu UI & Spawn Tools</h4>
+                            </div>
+                            <p>Main menu made completely from scratch — includes camera movement and tool spawning logic.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <div class="carousel-video">
+                                            <video controls muted loop playsinline preload="metadata">
+                                                <source src="videos/ui_menu.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
                         </div>
-                </div>
+
+                        <div class="script-item">
+                            <div class="item-header">
+                                <h4>This Portfolio Page</h4>
+                            </div>
+                            <p>lmao</p>
+                            <div class="tags" aria-label="Tags">
+                                <span class="tag html">html</span>
+                                <span class="tag css">css</span>
+                                <span class="tag js">javascript</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
             </section>
 
             <!-- Building Portfolio -->
@@ -255,8 +337,8 @@
 
                 <article class="building-game">
                     <div class="building-header">
-                        <h3>Sci-Fi Station</h3>
-                        <p>A futuristic space station environment with modular corridors and control rooms.</p>
+                        <h3>Mariana Islands</h3>
+                        <p>An attempted recreation of the island of Saipan and its buildings.</p>
                         <div class="tags">
                             <span class="tag environment">environment</span>
                             <span class="tag scifi">sci-fi</span>
@@ -264,27 +346,46 @@
                         </div>
                     </div>
 
-                    <div class="building-gallery">
-                        <img src="images/placeholder-scifi1.jpg" alt="Control room">
-                        <img src="images/placeholder-scifi2.jpg" alt="Corridor">
-                    </div>
-
                     <div class="building-items">
                         <div class="building-item">
-                            <h4>Control Console</h4>
+                            <div class="item-header">
+                                <h4>Control Console</h4>
+                                <a href="#" class="view-3d-btn" target="_blank" rel="noopener">
+                                    <i class="fa-solid fa-cube"></i>
+                                    View in 3D
+                                </a>
+                            </div>
                             <p>Interactive control panel with animated screens and buttons.</p>
-                            <div class="viewer-placeholder" data-viewer-id="control-console" data-model="models/console.glb">
-                                <i class="fa-solid fa-cube"></i>
-                                <span>Click to view in 3D</span>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <img src="images/placeholder-scifi1.jpg" alt="Console view 1">
+                                        <img src="images/placeholder-scifi2.jpg" alt="Console view 2">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
                             </div>
                         </div>
 
                         <div class="building-item">
-                            <h4>Corridor Module</h4>
-                            <p>Modular corridor piece with lighting and door frames.</p>
-                            <div class="viewer-placeholder" data-viewer-id="corridor" data-model="models/corridor.glb">
-                                <i class="fa-solid fa-cube"></i>
-                                <span>Click to view in 3D</span>
+                            <div class="item-header">
+                                <h4>DPS HQ</h4>
+                                <a href="#" class="view-3d-btn" target="_blank" rel="noopener">
+                                    <i class="fa-solid fa-cube"></i>
+                                    View in 3D
+                                </a>
+                            </div>
+                            <p>The HQ for the commonwealth of the northern mariana islands.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <img src="images/placeholder-scifi1.jpg" alt="DPS HQ view 1">
+                                        <img src="images/placeholder-scifi2.jpg" alt="DPS HQ view 2">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>

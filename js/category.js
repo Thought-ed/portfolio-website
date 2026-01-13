@@ -44,8 +44,8 @@ function hideAllProjects(callback) {
   setTimeout(() => {
     if (scriptingProjects) {
       scriptingProjects.classList.remove('visible', 'hiding');
-      const cards = scriptingProjects.querySelectorAll('.project-card');
-      cards.forEach(card => card.classList.remove('show'));
+      const groups = scriptingProjects.querySelectorAll('.scripting-group');
+      groups.forEach(group => group.classList.remove('show'));
     }
     
     if (buildingProjects) {
@@ -70,10 +70,10 @@ export function revealScriptingProjects() {
   
   scriptingProjects.classList.add('show');
   
-  const cards = scriptingProjects.querySelectorAll('.project-card');
-  cards.forEach((card, i) => {
+  const groups = scriptingProjects.querySelectorAll('.scripting-group');
+  groups.forEach((group, i) => {
     setTimeout(() => {
-      card.classList.add('show');
+      group.classList.add('show');
       scheduleWindowHeightUpdate();
     }, 100 + i * 120); // Staggered with initial delay
   });
