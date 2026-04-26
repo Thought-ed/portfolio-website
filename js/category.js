@@ -23,7 +23,7 @@ export function hideCategorySelector() {
 }
 
 function hideAllProjects(callback) {
-  const { scriptingProjects, buildingProjects } = elements;
+  const { scriptingProjects, buildingProjects, modellingProjects } = elements;
   let hasVisibleContent = false;
   
   // Add hiding class for fade-out animation
@@ -38,6 +38,12 @@ function hideAllProjects(callback) {
     buildingProjects.classList.add('hiding');
     buildingProjects.classList.remove('show');
   }
+
+  if (modellingProjects && modellingProjects.classList.contains('show')) {
+    hasVisibleContent = true;
+    modellingProjects.classList.add('hiding');
+    modellingProjects.classList.remove('show');
+  }
   
   // Wait for animation then fully hide
   const animDuration = hasVisibleContent ? 300 : 0;
@@ -51,6 +57,12 @@ function hideAllProjects(callback) {
     if (buildingProjects) {
       buildingProjects.classList.remove('visible', 'hiding');
       const games = buildingProjects.querySelectorAll('.building-game');
+      games.forEach(game => game.classList.remove('show'));
+    }
+
+    if (modellingProjects) {
+      modellingProjects.classList.remove('visible', 'hiding');
+      const games = modellingProjects.querySelectorAll('.building-game');
       games.forEach(game => game.classList.remove('show'));
     }
     
@@ -104,6 +116,25 @@ export function revealBuildingProjects() {
   scheduleWindowHeightUpdate();
 }
 
+export function revealModellingProjects() {
+  const { modellingProjects } = elements;
+  if (!modellingProjects) return;
+
+  modellingProjects.classList.add('visible');
+  void modellingProjects.offsetHeight;
+  modellingProjects.classList.add('show');
+
+  const games = modellingProjects.querySelectorAll('.building-game');
+  games.forEach((game, i) => {
+    setTimeout(() => {
+      game.classList.add('show');
+      scheduleWindowHeightUpdate();
+    }, 100 + i * 150);
+  });
+
+  scheduleWindowHeightUpdate();
+}
+
 export function selectCategory(category) {
   const { categorySelector } = elements;
   const prevCategory = state.selectedCategory;
@@ -131,6 +162,8 @@ export function selectCategory(category) {
       revealScriptingProjects();
     } else if (category === 'building') {
       revealBuildingProjects();
+    } else if (category === 'modelling') {
+      revealModellingProjects();
     }
     
     // Only trigger continue typing callback on first selection
@@ -151,9 +184,11 @@ export function initCategorySelector(onCategorySelected) {
   
   const scriptingBtn = categorySelector.querySelector('[data-category="scripting"]');
   const buildingBtn = categorySelector.querySelector('[data-category="building"]');
+  const modellingBtn = categorySelector.querySelector('[data-category="modelling"]');
   
   scriptingBtn?.addEventListener('click', () => selectCategory('scripting'));
   buildingBtn?.addEventListener('click', () => selectCategory('building'));
+  modellingBtn?.addEventListener('click', () => selectCategory('modelling'));
 }
 
 // For skip flow - show category selector ready to pick
@@ -164,9 +199,11 @@ export function revealProjectsInstant() {
   if (categorySelector) {
     const scriptingBtn = categorySelector.querySelector('[data-category="scripting"]');
     const buildingBtn = categorySelector.querySelector('[data-category="building"]');
+    const modellingBtn = categorySelector.querySelector('[data-category="modelling"]');
     
     scriptingBtn?.addEventListener('click', () => selectCategory('scripting'));
     buildingBtn?.addEventListener('click', () => selectCategory('building'));
+    modellingBtn?.addEventListener('click', () => selectCategory('modelling'));
     
     // Show category selector so user can pick
     categorySelector.classList.remove('hidden');

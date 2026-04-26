@@ -13,7 +13,7 @@ export const state = {
   dynamicHeightActive: true,
   resizeObserver: null,
   loaderHideQueued: false,
-  selectedCategory: null // 'scripting' | 'building' | null
+  selectedCategory: null // 'scripting' | 'building' | 'modelling' | null
 };
 
 // DOM element cache (populated on init)
@@ -31,6 +31,7 @@ export const elements = {
   animatedText: null,
   scriptingProjects: null,
   buildingProjects: null,
+  modellingProjects: null,
   categorySelector: null,
   clockTimeEl: null,
   clockDateEl: null
@@ -51,6 +52,7 @@ export function initElements() {
   elements.animatedText = document.getElementById('animated-text');
   elements.scriptingProjects = document.getElementById('scripting-projects');
   elements.buildingProjects = document.getElementById('building-projects');
+  elements.modellingProjects = document.getElementById('modelling-projects');
   elements.categorySelector = document.getElementById('category-selector');
   elements.clockTimeEl = document.getElementById('taskbar-time');
   elements.clockDateEl = document.getElementById('taskbar-date');

@@ -64,12 +64,23 @@ html, body { background: var(--bg); color: var(--text); margin: 0; }
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--text-dim);
   font-weight: 600;
   font-size: 0.92rem;
   letter-spacing: 0.2px;
   user-select: none;
   pointer-events: none;
+}
+
+.window-title-avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 16px;
 }
 
 h1, h2, h3, p { color: var(--text); }
@@ -1116,6 +1127,11 @@ img, video {
   color: var(--text);
 }
 
+.game-title-small {
+  font-size: 1.2rem !important;
+  letter-spacing: 0.2px;
+}
+
 .building-game .game-header p,
 .building-game .building-header p {
   color: var(--text-dim);
@@ -1254,6 +1270,17 @@ img, video {
   border-radius: 10px;
 }
 
+.image-carousel.portrait-media .carousel-track {
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.image-carousel.portrait-media .carousel-track img,
+.image-carousel.portrait-media .carousel-track .carousel-video {
+  height: 320px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .carousel-track img.active,
 .carousel-track .carousel-video.active {
   display: block;
@@ -1264,6 +1291,28 @@ img, video {
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+}
+
+.image-carousel.portrait-media .carousel-track .carousel-video video {
+  object-fit: contain;
+}
+
+.script-item.portrait-card,
+.building-item.portrait-card {
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+@media (max-width: 700px) {
+  .image-carousel.portrait-media .carousel-track img,
+  .image-carousel.portrait-media .carousel-track .carousel-video {
+    height: 260px;
+  }
+
+  .script-item.portrait-card,
+  .building-item.portrait-card {
+    max-width: none;
+  }
 }
 
 .carousel-btn {

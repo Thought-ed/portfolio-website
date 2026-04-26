@@ -16,6 +16,51 @@ function initCarousels() {
     const nextBtn = carousel.querySelector('.carousel-btn.next');
     
     if (slides.length === 0) return;
+
+    const card = carousel.closest('.script-item, .building-item');
+    let hasPortraitMedia = false;
+
+    const markPortraitState = (isPortrait) => {
+      if (!isPortrait || hasPortraitMedia) return;
+      hasPortraitMedia = true;
+      carousel.classList.add('portrait-media');
+      card?.classList.add('portrait-card');
+    };
+
+    const detectPortraitMedia = (slide) => {
+      if (slide.tagName === 'IMG') {
+        const img = slide;
+        const evaluate = () => {
+          if (!img.naturalWidth || !img.naturalHeight) return;
+          markPortraitState(img.naturalHeight > img.naturalWidth);
+        };
+
+        if (img.complete) {
+          evaluate();
+        } else {
+          img.addEventListener('load', evaluate, { once: true });
+        }
+        return;
+      }
+
+      if (slide.classList.contains('carousel-video')) {
+        const video = slide.querySelector('video');
+        if (!video) return;
+
+        const evaluate = () => {
+          if (!video.videoWidth || !video.videoHeight) return;
+          markPortraitState(video.videoHeight > video.videoWidth);
+        };
+
+        if (video.readyState >= 1) {
+          evaluate();
+        } else {
+          video.addEventListener('loadedmetadata', evaluate, { once: true });
+        }
+      }
+    };
+
+    slides.forEach(detectPortraitMedia);
     
     let currentIndex = 0;
     

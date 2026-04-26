@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <title>thought_ed — portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/webp"
+        href="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-309847DD93BAB032D0050CC8D5A4A6F1-Png/150/150/AvatarHeadshot/Webp/noFilter">
+    <link rel="apple-touch-icon"
+        href="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-309847DD93BAB032D0050CC8D5A4A6F1-Png/150/150/AvatarHeadshot/Webp/noFilter">
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <meta property="og:description" content="roblox scripting projects and more stuff">
     <meta property="og:image"
-        content="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-B3EAFFA72094057540F3287DC0FAE1FB-Png/150/150/AvatarHeadshot/Webp/noFilter">
+        content="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-309847DD93BAB032D0050CC8D5A4A6F1-Png/150/150/AvatarHeadshot/Webp/noFilter">
     <meta property="og:url" content="https://a-tiny-developer-portfolio.web.app/">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#43B581">
@@ -49,7 +53,9 @@
         <div class="taskbar">
             <div class="task-icons">
                 <span class="tb-icon" title="Start"><img src="images/icons/windows11icon.png" alt="Windows"></span>
-                <span class="tb-icon active" title="Chrome"><img src="images/icons/chromeicon.jpg" alt="Chrome"></span>
+                <span class="tb-icon active" title="thought_ed"><img
+                    src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-309847DD93BAB032D0050CC8D5A4A6F1-Png/150/150/AvatarHeadshot/Webp/noFilter"
+                    alt="thought_ed avatar"></span>
                 <span class="tb-icon active" title="File Explorer"><img src="images/icons/fileexplorericon.png"
                         alt="File Explorer"></span>
                 <span class="tb-icon" title="Store"><img src="images/icons/storeicon.png" alt="Store"></span>
@@ -79,7 +85,12 @@
             <span class="mac-btn red"></span>
             <span class="mac-btn yellow"></span>
             <span class="mac-btn green"></span>
-            <div class="window-title">thought_ed's portfolio</div>
+            <div class="window-title">
+                <img class="window-title-avatar"
+                    src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-309847DD93BAB032D0050CC8D5A4A6F1-Png/150/150/AvatarHeadshot/Webp/noFilter"
+                    alt="thought_ed avatar icon">
+                <span>thought_ed's portfolio</span>
+            </div>
         </div>
 
         <!-- Skip intro button (shown during typing) -->
@@ -92,7 +103,7 @@
 
         <main id="main-content">
             <div class="title-container">
-                <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-B3EAFFA72094057540F3287DC0FAE1FB-Png/150/150/AvatarHeadshot/Webp/noFilter"
+                <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-309847DD93BAB032D0050CC8D5A4A6F1-Png/150/150/AvatarHeadshot/Webp/noFilter"
                     alt="profile" class="pfp">
                 <h1>thought_ed's portfolio</h1>
             </div>
@@ -112,10 +123,11 @@
                     <span>Building</span>
                     <small>3D models, maps & environments</small>
                 </button>
-                <button type="button" class="category-btn disabled" disabled aria-disabled="true">
+                <button type="button" data-category="modelling" class="category-btn">
+                    <span class="wip-badge">WIP</span>
                     <i class="fa-solid fa-shapes"></i>
                     <span>Modelling</span>
-                    <small>Coming soon...</small>
+                    <small>Minimal object showcases</small>
                 </button>
             </div>
 
@@ -148,10 +160,10 @@
                                     <div class="carousel-track">
                                         <div class="carousel-video">
                                             <video controls muted loop playsinline preload="metadata">
-                                                <source src="videos/HELMIS1.mp4" type="video/mp4">
+                                                <source src="videos/scripting/medical/HELMIS1.mp4" type="video/mp4">
                                             </video>
                                         </div>
-                                        <img src="images/HELMIS2.png" alt="HELMIS UI screenshot">
+                                        <img src="images/scripting/medical/HELMIS2.png" alt="HELMIS UI screenshot">
                                     </div>
                                     <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
                                 </div>
@@ -169,35 +181,16 @@
                                     <div class="carousel-track">
                                         <div class="carousel-video">
                                             <video controls muted loop playsinline preload="metadata">
-                                                <source src="videos/Monitor1.mp4" type="video/mp4">
+                                                <source src="videos/scripting/medical/Monitor1.mp4" type="video/mp4">
                                             </video>
                                         </div>
-                                        <img src="images/Monitor2.png" alt="Vitals monitor screenshot">
+                                        <img src="images/scripting/medical/Monitor2.png" alt="Vitals monitor screenshot">
                                     </div>
                                     <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="script-item">
-                            <div class="item-header">
-                                <h4>Medicine Model (WIP)</h4>
-                            </div>
-                            <p>A small model I've been working on — early stage of 3D modeling for a future game feature.</p>
-                            <div class="image-carousel">
-                                <div class="carousel-wrapper">
-                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
-                                    <div class="carousel-track">
-                                        <div class="carousel-video">
-                                            <video controls muted loop playsinline preload="metadata">
-                                                <source src="videos/medicine_model.mp4" type="video/mp4">
-                                            </video>
-                                        </div>
-                                    </div>
-                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </article>
 
@@ -225,12 +218,12 @@
                                     <div class="carousel-track">
                                         <div class="carousel-video">
                                             <video controls muted loop playsinline preload="metadata">
-                                                <source src="videos/damage_system1.mp4" type="video/mp4">
+                                                <source src="videos/scripting/combat/damage_system1.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                         <div class="carousel-video">
                                             <video controls muted loop playsinline preload="metadata">
-                                                <source src="videos/damage_system2.mp4" type="video/mp4">
+                                                <source src="videos/scripting/combat/damage_system2.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
@@ -250,9 +243,60 @@
                                     <div class="carousel-track">
                                         <div class="carousel-video">
                                             <video controls muted loop playsinline preload="metadata">
-                                                <source src="videos/gun_system.mp4" type="video/mp4">
+                                                <source src="videos/scripting/combat/gun_system.mp4" type="video/mp4">
                                             </video>
                                         </div>
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="scripting-group">
+                    <div class="group-header">
+                        <h3 class="game-title-small">skamtebord</h3>
+                        <p>Gameplay scripting for a Roblox skateboard game: controller behavior, structure, and flow.</p>
+                        <div class="tags">
+                            <span class="tag systems">systems</span>
+                            <span class="tag tooling">tooling</span>
+                            <span class="tag wip">wip</span>
+                        </div>
+                    </div>
+
+                    <div class="group-items">
+                        <div class="script-item">
+                            <div class="item-header">
+                                <h4>Early Gameplay Showcase</h4>
+                            </div>
+                            <p>First playable pass of movement and board feel.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <div class="carousel-video">
+                                            <video controls muted loop playsinline preload="metadata">
+                                                <source src="videos/scripting/skateboard/skateboardearlyshowcase.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="script-item">
+                            <div class="item-header">
+                                <h4>Hierarchy Debug Cards</h4>
+                            </div>
+                            <p>Two hierarchy snapshots used while organizing scripts and parts.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <img src="images/scripting/skateboard/skateboardhierarchy.png" alt="Skateboard hierarchy view one">
+                                        <img src="images/scripting/skateboard/skateboardhierarchy2.png" alt="Skateboard hierarchy view two">
                                     </div>
                                     <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
                                 </div>
@@ -285,7 +329,7 @@
                                     <div class="carousel-track">
                                         <div class="carousel-video">
                                             <video controls muted loop playsinline preload="metadata">
-                                                <source src="videos/magic_tool.mp4" type="video/mp4">
+                                                <source src="videos/scripting/tools/magic_tool.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
@@ -305,7 +349,7 @@
                                     <div class="carousel-track">
                                         <div class="carousel-video">
                                             <video controls muted loop playsinline preload="metadata">
-                                                <source src="videos/ui_menu.mp4" type="video/mp4">
+                                                <source src="videos/scripting/tools/ui_menu.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
@@ -337,59 +381,152 @@
 
                 <article class="building-game">
                     <div class="building-header">
-                        <h3>Mariana Islands</h3>
-                        <p>An attempted recreation of the island of Saipan and its buildings.</p>
+                        <h3 class="game-title-small">Mariana Islands</h3>
+                        <p>Whole-game environment build. Focus right now: Saipan airport.</p>
                         <div class="tags">
                             <span class="tag environment">environment</span>
-                            <span class="tag scifi">sci-fi</span>
-                            <span class="tag systems">systems</span>
+                            <span class="tag modeling">modelling</span>
+                            <span class="tag wip">wip</span>
                         </div>
                     </div>
 
                     <div class="building-items">
                         <div class="building-item">
                             <div class="item-header">
-                                <h4>Control Console</h4>
-                                <a href="#" class="view-3d-btn" target="_blank" rel="noopener">
-                                    <i class="fa-solid fa-cube"></i>
-                                    View in 3D
-                                </a>
+                                <h4>Terminal Exterior</h4>
                             </div>
-                            <p>Interactive control panel with animated screens and buttons.</p>
+                            <p>Main terminal shell, parking edges, and entrance framing.</p>
                             <div class="image-carousel">
                                 <div class="carousel-wrapper">
-                                    <button class="carousel-btn prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
                                     <div class="carousel-track">
-                                        <img src="images/placeholder-scifi1.jpg" alt="Console view 1">
-                                        <img src="images/placeholder-scifi2.jpg" alt="Console view 2">
+                                        <img src="images/building/marianaislands/terminal1.png" alt="Mariana Islands terminal exterior view">
                                     </div>
-                                    <button class="carousel-btn next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
                                 </div>
                             </div>
                         </div>
 
                         <div class="building-item">
                             <div class="item-header">
-                                <h4>DPS HQ</h4>
-                                <a href="#" class="view-3d-btn" target="_blank" rel="noopener">
-                                    <i class="fa-solid fa-cube"></i>
-                                    View in 3D
-                                </a>
+                                <h4>Terminal Pass Two</h4>
                             </div>
-                            <p>The HQ for the commonwealth of the northern mariana islands.</p>
+                            <p>Another look from the main entrance and terminal</p>
                             <div class="image-carousel">
                                 <div class="carousel-wrapper">
-                                    <button class="carousel-btn prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
                                     <div class="carousel-track">
-                                        <img src="images/placeholder-scifi1.jpg" alt="DPS HQ view 1">
-                                        <img src="images/placeholder-scifi2.jpg" alt="DPS HQ view 2">
+                                        <img src="images/building/marianaislands/terminal2.png" alt="Mariana Islands terminal secondary pass">
                                     </div>
-                                    <button class="carousel-btn next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="building-item">
+                            <div class="item-header">
+                                <h4>Airport Layout</h4>
+                            </div>
+                            <p>Runway-side objects and surrounding airport layout blockout.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <img src="images/building/marianaislands/airport1.png" alt="Mariana Islands airport layout view">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </article>
+
+            </section>
+
+            <!-- Modelling Portfolio -->
+            <section class="building-projects" id="modelling-projects">
+                <h2>modelling work 🧩</h2>
+                <p>Minimal model drops grouped by game.</p>
+
+                <article class="building-game">
+                    <div class="building-header">
+                        <h3 class="game-title-small">skamtebord</h3>
+                        <p>Skateboard game, inspired on Skate 3-4. Goal is to have proper smooth animations and good gameplay instead of most skateboard games, that involve only pressing a key and perfect execution</p>
+                        <div class="tags">
+                            <span class="tag modeling">modelling</span>
+                            <span class="tag systems">props</span>
+                            <span class="tag wip">wip</span>
+                        </div>
+                    </div>
+
+                    <div class="building-items">
+                        <div class="building-item">
+                            <div class="item-header">
+                                <h4>Standard skateboard model</h4>
+                            </div>
+                            <p>Skateboard model cooked from scratch on Blender, unshaded view.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <img src="images/modelling/skateboard/skateboardblender.png" alt="Skateboard model in Blender">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="building-item">
+                            <div class="item-header">
+                                <h4>Skateboard model hierarchy</h4>
+                            </div>
+                            <p>Skateboard model hierarchy. Parts shown here in their respective folders and for scripting purposes.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <img src="images/modelling/skateboard/skateboardmodelhierarchy.png" alt="Skateboard model hierarchy view">
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="building-game">
+                    <div class="building-header">
+                        <h3>Medical Asset Showcase</h3>
+                        <p>Prototype pass for healthcare-themed item modelling.</p>
+                        <div class="tags">
+                            <span class="tag modeling">modelling</span>
+                            <span class="tag wip">wip</span>
+                        </div>
+                    </div>
+
+                    <div class="building-items">
+                        <div class="building-item">
+                            <div class="item-header">
+                                <h4>Pill Model</h4>
+                            </div>
+                            <p>Moved here from scripting. Kept for the modelling backlog.</p>
+                            <div class="image-carousel">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div class="carousel-track">
+                                        <div class="carousel-video">
+                                            <video controls muted loop playsinline preload="metadata">
+                                                <source src="videos/modelling/medical/medicine_model.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                
 
             </section>
         </main>
